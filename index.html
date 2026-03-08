@@ -3,101 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HK-SPACE & FUSION | Eternal Energy</title>
+    <title>HK-SPACE & FUSION | Eternal Energy Empire</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --main-cyan: #00ffcc; --bg-black: #050505; --card-bg: #111111; --fusion-orange: #ff6600; --space-blue: #001133; }
-        body { background-color: var(--bg-black); color: #ffffff; font-family: 'Noto Sans KR', sans-serif; margin: 0; overflow-x: hidden; }
-        .neon-text { font-family: 'Orbitron', sans-serif; color: var(--fusion-orange); text-shadow: 0 0 20px rgba(255,102,0,0.7); }
+        :root { 
+            --main-orange: #ff6600; 
+            --deep-space: #050505; 
+            --card-bg: rgba(20, 20, 30, 0.8);
+            --nebula-blue: #0033ff;
+        }
+        body { 
+            background-color: var(--deep-space); 
+            color: #ffffff; 
+            font-family: 'Noto Sans KR', sans-serif; 
+            margin: 0; 
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        /* 웅장한 애니메이션 배경 */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
+            z-index: -1;
+        }
+
+        .neon-orange { 
+            font-family: 'Orbitron', sans-serif; 
+            color: var(--main-orange); 
+            text-shadow: 0 0 20px rgba(255, 102, 0, 0.8); 
+        }
+
+        /* 고품격 언어 선택 바 */
+        .lang-bar { 
+            position: sticky; 
+            top: 0; 
+            background: rgba(0, 0, 0, 0.9); 
+            padding: 20px; 
+            display: flex; 
+            gap: 12px; 
+            justify-content: center; 
+            z-index: 1000; 
+            border-bottom: 2px solid var(--main-orange);
+            backdrop-filter: blur(10px);
+        }
+        .lang-bar button { 
+            background: transparent; 
+            border: 1px solid #444; 
+            color: #aaa; 
+            padding: 10px 25px; 
+            cursor: pointer; 
+            border-radius: 30px; 
+            font-family: 'Orbitron', sans-serif; 
+            transition: 0.4s;
+            font-size: 0.8rem;
+        }
+        .lang-bar button:hover, .lang-bar button.active { 
+            border-color: var(--main-orange); 
+            color: #white; 
+            box-shadow: 0 0 15px var(--main-orange);
+            background: rgba(255, 102, 0, 0.1);
+        }
+
+        header { 
+            padding: 150px 20px; 
+            text-align: center; 
+            background: linear-gradient(to bottom, #001133 0%, #050505 100%);
+        }
+        h1 { font-size: 5rem; margin: 0; letter-spacing: 12px; text-transform: uppercase; }
+        .tagline { font-size: 1.8rem; color: #ccc; margin-top: 40px; font-weight: 300; letter-spacing: 3px; }
+
+        /* 섹션 디자인 */
+        .section { max-width: 1200px; margin: 100px auto; padding: 0 40px; }
+        .intro-box { 
+            text-align: center; 
+            font-size: 1.4rem; 
+            color: #ddd; 
+            margin-bottom: 120px; 
+            padding: 40px;
+            border-left: 5px solid var(--main-orange);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); 
+            gap: 60px; 
+        }
+        .card { 
+            background: var(--card-bg); 
+            border-radius: 40px; 
+            padding: 70px; 
+            border: 1px solid #333; 
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
+        .card:hover { 
+            border-color: var(--main-orange); 
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(255, 102, 0, 0.2);
+        }
+        .card h2 { font-size: 2.2rem; margin-bottom: 35px; }
+        .card p { font-size: 1.15rem; color: #bbb; line-height: 2; }
+
+        /* 하단 컨택트 영역 */
+        .contact-area { 
+            background: #000; 
+            padding: 150px 20px; 
+            text-align: center; 
+            border-top: 5px solid var(--main-orange);
+        }
+        .social-container { display: flex; justify-content: center; gap: 40px; margin: 60px 0; flex-wrap: wrap; }
+        .btn { 
+            text-decoration: none; 
+            color: #fff; 
+            background: var(--main-orange); 
+            padding: 25px 80px; 
+            border-radius: 15px; 
+            font-size: 1.6rem; 
+            font-weight: bold; 
+            font-family: 'Orbitron', sans-serif;
+            transition: 0.3s;
+        }
+        .btn:hover { background: #fff; color: var(--main-orange); transform: scale(1.1); }
         
-        .lang-bar { position: sticky; top: 0; background: rgba(5,5,5,0.98); padding: 15px; display: flex; gap: 10px; justify-content: center; z-index: 1000; border-bottom: 2px solid #222; flex-wrap: wrap; }
-        .lang-bar button { background: #1a1a1a; border: 1px solid #333; color: #777; padding: 10px 20px; cursor: pointer; border-radius: 5px; font-size: 0.9rem; transition: 0.3s; font-family: 'Orbitron', sans-serif; }
-        .lang-bar button:hover, .lang-bar button.active { border-color: var(--fusion-orange); color: white; background: #222; box-shadow: 0 0 15px var(--fusion-orange); }
+        .email-display { 
+            font-size: 3rem; 
+            color: var(--main-orange); 
+            text-decoration: none; 
+            font-family: 'Orbitron', sans-serif;
+            border-bottom: 3px solid var(--main-orange);
+            transition: 0.3s;
+        }
+        .email-display:hover { color: #fff; border-color: #fff; }
 
-        header { padding: 120px 20px; text-align: center; background: radial-gradient(circle at center, var(--space-blue) 0%, #050505 100%); border-bottom: 1px solid #222; }
-        h1 { font-size: 3.5rem; margin: 0; letter-spacing: 5px; line-height: 1.2; }
-        .vision-sub { font-size: 1.4rem; color: #aaa; margin-top: 30px; font-weight: 300; letter-spacing: 2px; }
-
-        .main-content { max-width: 1200px; margin: 80px auto; padding: 0 40px; }
-        .intro-text { font-size: 1.25rem; line-height: 2.2; color: #eee; text-align: center; margin-bottom: 100px; }
-        
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
-        .mission-card { background: var(--card-bg); border: 1px solid #333; border-radius: 30px; padding: 60px; transition: 0.6s ease; position: relative; }
-        .mission-card:hover { transform: translateY(-20px); border-color: var(--fusion-orange); box-shadow: 0 30px 60px rgba(255,102,0,0.2); }
-        .mission-card h2 { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; margin-bottom: 30px; color: var(--fusion-orange); }
-        .mission-card p { color: #ccc; line-height: 1.9; font-size: 1.1rem; }
-
-        .social-section { background: #080808; padding: 120px 10%; text-align: center; border-top: 4px solid var(--fusion-orange); margin-top: 120px; }
-        .social-links { display: flex; justify-content: center; gap: 40px; margin-top: 60px; flex-wrap: wrap; }
-        .social-btn { text-decoration: none; color: #fff; background: var(--fusion-orange); font-family: 'Orbitron', sans-serif; font-weight: bold; padding: 25px 80px; border-radius: 12px; font-size: 1.5rem; transition: 0.4s; box-shadow: 0 10px 20px rgba(255,102,0,0.3); }
-        .social-btn:hover { background: #fff; color: var(--fusion-orange); transform: scale(1.08); box-shadow: 0 15px 40px var(--fusion-orange); }
-        
-        .email-area { margin-top: 100px; }
-        .email-link { color: var(--fusion-orange); text-decoration: none; font-size: 2.8rem; border-bottom: 5px solid var(--fusion-orange); font-family: 'Orbitron', sans-serif; transition: 0.3s; display: inline-block; }
-        .email-link:hover { color: #fff; border-color: #fff; text-shadow: 0 0 25px #fff; }
-
-        footer { padding: 100px; text-align: center; font-family: 'Orbitron', sans-serif; font-size: 1rem; color: #444; }
+        footer { padding: 80px; text-align: center; color: #444; font-family: 'Orbitron', sans-serif; }
     </style>
 </head>
 <body>
-    <div class="lang-bar">
-        <button onclick="changeLang('ko', this)" class="active">KOREAN</button>
-        <button onclick="changeLang('en', this)">ENGLISH</button>
-        <button onclick="changeLang('zh', this)">CHINESE</button>
-        <button onclick="changeLang('ar', this)">ARABIC</button>
-        <button onclick="changeLang('jp', this)">JAPANESE</button>
-        <button onclick="changeLang('es', this)">SPANISH</button>
+
+<div class="lang-bar">
+    <button onclick="chLang('ko', this)" class="active">KOREAN</button>
+    <button onclick="chLang('en', this)">ENGLISH</button>
+    <button onclick="chLang('zh', this)">CHINESE</button>
+    <button onclick="chLang('ar', this)">ARABIC</button>
+    <button onclick="chLang('jp', this)">JAPANESE</button>
+    <button onclick="chLang('es', this)">SPANISH</button>
+</div>
+
+<header>
+    <h1 class="neon-orange">HK-SPACE & FUSION</h1>
+    <p id="v-tag" class="tagline">"인류의 영원한 태양을 우주에 띄우다"</p>
+</header>
+
+<div class="section">
+    <div id="intro-c" class="intro-box">
+        HK-SPACE & FUSION은 더 이상 자원의 한계에 부딪히지 않는 인류의 미래를 설계합니다. 우리는 핵융합 기술을 완성하여 지구에 무한한 에너지를 공급하고, 거대 우주 인프라를 통해 은하계 전역으로 문명을 확장하는 대여정을 이끌고 있습니다.
     </div>
 
-    <header>
-        <h1 class="neon-text">HK-SPACE & FUSION</h1>
-        <p id="vision-tag" class="vision-sub">"인공태양 무한 에너지 및 우주 인프라 구축"</p>
-    </header>
-
-    <div class="main-content">
-        <div id="intro" class="intro-text">
-            HK-SPACE & FUSION은 인류의 영원한 에너지 독립과 우주 진출을 선도합니다. 핵융합 프로젝트와 우주 네트워크를 통해 지구가 직면한 에너지 위기를 종결시킵니다.
+    <div class="grid">
+        <div class="card">
+            <h2 id="t1" class="neon-orange">NUCLEAR FUSION</h2>
+            <p id="d1">지상 위에 인공태양을 건설하는 핵융합 프로젝트. 바닷물에서 추출한 연료로 무한한 에너지를 생산하며, 공해와 사고 위험이 없는 완벽한 청정 에너지 시대를 개막합니다.</p>
         </div>
-
-        <div class="grid-container">
-            <div class="mission-card"><h2 id="t1">FUSION ENERGY</h2><p id="d1">무한 청정 에너지를 제공하는 인공태양 건설.</p></div>
-            <div class="mission-card"><h2 id="t2">SPACE INFRA</h2><p id="d2">거대 우주 거점 및 행성 간 이동 경로 구축.</p></div>
-            <div class="mission-card"><h2 id="t3">NEXT GEN</h2><p id="d3">로봇 기술과 융합된 무인 우주 탐사 시스템.</p></div>
+        <div class="card">
+            <h2 id="t2" class="neon-orange">GALACTIC INFRA</h2>
+            <p id="d2">지구 궤도를 넘어선 거대 우주 정거장과 행성 간 초고속 운송 네트워크 구축. 인류가 다행성 종족으로 거듭나기 위한 물류와 거주 인프라의 표준을 제시합니다.</p>
+        </div>
+        <div class="card">
+            <h2 id="t3" class="neon-orange">SPACE ROBOTICS</h2>
+            <p id="d3">HK-FIGURE의 로봇 기술과 결합된 무인 우주 개척 시스템. 극한의 우주 환경에서 자원을 채굴하고 기지를 건설하는 지능형 휴머노이드 군단을 전방에 배치합니다.</p>
         </div>
     </div>
+</div>
 
-    <section class="social-section">
-        <h2 class="neon-text" style="font-size: 3rem; margin-bottom: 50px;">HK GLOBAL CHANNELS</h2>
-        <div class="social-links">
-            <a href="https://www.youtube.com/@Hyekong2025" target="_blank" class="social-btn">YOUTUBE</a>
-            <a href="https://www.tiktok.com/@hyekong2025" target="_blank" class="social-btn">TIKTOK</a>
-        </div>
-        <div class="email-area">
-            <a href="mailto:info@spacefusion.com" class="email-link">info@spacefusion.com</a>
-        </div>
-    </section>
+<section class="contact-area">
+    <h2 class="neon-orange" style="font-size: 3.5rem;">GLOBAL NETWORK</h2>
+    <div class="social-container">
+        <a href="https://www.youtube.com/@Hyekong2025" target="_blank" class="btn">YOUTUBE</a>
+        <a href="https://www.tiktok.com/@hyekong2025" target="_blank" class="btn">TIKTOK</a>
+    </div>
+    <div style="margin-top: 100px;">
+        <p style="color: #666; letter-spacing: 5px;">OFFICIAL COMMUNICATION</p>
+        <a href="mailto:info@spacefusion.com" class="email-display">info@spacefusion.com</a>
+    </div>
+</section>
 
-    <footer>© 2026 HK-SPACE & FUSION | HK GROUP ENERGY DIVISION</footer>
+<footer>
+    © 2026 HK-SPACE & FUSION | HK GROUP ENERGY DIVISION | FOUNDER LEE JAE-WAN
+</footer>
 
-    <script>
-        const content = {
-            ko: { tag: "인공태양 무한 에너지 및 우주 인프라 구축", intro: "HK-SPACE & FUSION은 인류의 에너지 독립과 우주 시대를 여는 핵심입니다.", t: ["핵융합 에너지", "우주 인프라", "차세대 우주 개척"], d: ["무한 청정 인공태양 건설", "거대 우주 정거장 구축", "무인 우주 탐사 시스템"] },
-            en: { tag: "Infinity Energy & Space Infra", intro: "Leading humanity's energy independence and space era.", t: ["FUSION ENERGY", "SPACE INFRA", "SPACE EXPLORATION"], d: ["Constructing artificial suns", "Building space networks", "Autonomous space systems"] },
-            zh: { tag: "无限能源与航天基础设施", intro: "引领人类能源独立和航天时代的核心。", t: ["核聚变能源", "航天基础设施", "空间探索"], d: ["建造人造太阳", "建设航天网络", "无人空间开发系统"] },
-            ar: { tag: "طاقة الاندماج وبنية الفضاء", intro: "تقود استقلال الطاقة من خلال الاندماج النووي والشبكات الفضائية.", t: ["طاقة الاندماج", "بنية الفضاء", "استكشاف الفضاء"], d: ["بناء شموس اصطناعية", "بناء محطات فضائية", "أنظمة استكشاف ذاتية"] },
-            jp: { tag: "無限エネルギーと宇宙インフラ", intro: "人類のエネルギー独立を切り拓く中核です。", t: ["核融合エネルギー", "宇宙インフラ", "宇宙開拓"], d: ["人工太陽建設", "巨大宇宙基地構築", "宇宙開拓システム"] },
-            es: { tag: "Energía Infinita e Infra Espacial", intro: "Liderando la independencia energética a través de la fusión.", t: ["ENERGÍA DE FUSIÓN", "INFRA ESPACIAL", "EXPLORACIÓN"], d: ["Construcción de soles artificiales", "Edificación de estaciones espaciales", "Sistemas de exploración"] }
-        };
-        function changeLang(lang, btn) {
-            document.getElementById('vision-tag').innerText = content[lang].tag;
-            document.getElementById('intro').innerText = content[lang].intro;
-            for(let i=1; i<=3; i++){
-                document.getElementById(`t${i}`).innerText = content[lang].t[i-1];
-                document.getElementById(`d${i}`).innerText = content[lang].d[i-1];
-            }
-            document.querySelectorAll('.lang-bar button').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+<script>
+    const data = {
+        ko: { v: "인류의 영원한 태양을 우주에 띄우다", i: "HK-SPACE & FUSION은 자원의 한계가 없는 미래를 설계합니다. 핵융합으로 무한 에너지를 공급하고, 우주 인프라를 통해 문명을 확장합니다.", t: ["핵융합 발전", "은하계 인프라", "우주 로보틱스"], d: ["지상 위에 인공태양을 건설하여 무한 청정 에너지를 공급합니다.", "행성 간 이동 네트워크와 거대 우주 정거장을 구축합니다.", "HK-FIGURE 로봇과 연동된 지능형 우주 개척 시스템입니다."] },
+        en: { v: "Launching Humanity's Eternal Sun into Space", i: "HK-SPACE & FUSION designs a future without resource limits. We supply infinite energy via fusion and expand civilization through space infra.", t: ["NUCLEAR FUSION", "GALACTIC INFRA", "SPACE ROBOTICS"], d: ["Constructing artificial suns to provide infinite clean energy.", "Building interplanetary networks and massive space stations.", "Intelligent space pioneering systems integrated with HK-FIGURE."] },
+        zh: { v: "将人类永恒的太阳发射到太空", i: "HK-SPACE & FUSION 设计了一个没有资源限制的未来。我们通过核聚变提供无限能源。", t: ["核聚变能源", "银河基础设施", "太空机器人"], d: ["建造人造太阳，提供无限清洁能源。", "建设行星间网络和巨型空间站。", "与 HK-FIGURE 机器人集成的智能太空开发系统。"] },
+        ar: { v: "إطلاق شمس البشرية الأبدية في الفضاء", i: "تصمم HK-SPACE & FUSION مستقبلاً بلا حدود للموارد. نحن نوفر طاقة لا نهائية عبر الاندماج النووي.", t: ["الاندماج النووي", "البنية التحتية للمجرة", "روبوتات الفضاء"], d: ["بناء شموس اصطناعية لتوفير طاقة نظيفة لا نهائية.", "بناء شبكات بين الكواكب ومحطات فضائية ضخمة.", "أنظمة رائدة في الفضاء متكاملة مع روبوتات HK-FIGURE."] },
+        jp: { v: "人類の永遠の太陽を宇宙に打ち上げる", i: "HK-SPACE & FUSIONは、資源の限界がない未来を設計します。核融合で無限のエネルギーを供給します。", t: ["核融合発電", "銀河インフラ", "宇宙ロボティクス"], d: ["地上に人工太陽を建設し、無限のクリーンエネルギーを供給します。", "惑星間移動ネットワークと巨大宇宙基地を構築します。", "HK-FIGUREと連携したインテリジェント宇宙開拓システム。"] },
+        es: { v: "Lanzando el sol eterno de la humanidad al espacio", i: "HK-SPACE & FUSION diseña un futuro sin límites de recursos. Suministramos energía infinita mediante fusión.", t: ["FUSIÓN NUCLEAR", "INFRA GALÁCTICA", "ROBÓTICA ESPACIAL"], d: ["Construcción de soles artificiales para energía limpia infinita.", "Construcción de redes interplanetarias y estaciones espaciales.", "Sistemas de pioneros espaciales integrados con HK-FIGURE."] }
+    };
+
+    function chLang(l, b) {
+        document.getElementById('v-tag').innerText = data[l].v;
+        document.getElementById('intro-c').innerText = data[l].i;
+        for(let i=1; i<=3; i++){
+            document.getElementById(`t${i}`).innerText = data[l].t[i-1];
+            document.getElementById(`d${i}`).innerText = data[l].d[i-1];
         }
-    </script>
+        document.querySelectorAll('.lang-bar button').forEach(x => x.classList.remove('active'));
+        b.classList.add('active');
+    }
+</script>
 </body>
 </html>
