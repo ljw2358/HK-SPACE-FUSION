@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HK-SPACE & FUSION | Eternal Energy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --main-cyan: #00ffcc; --bg-black: #050505; --card-bg: #111111; --fusion-orange: #ff6600; --space-blue: #001133; }
+        body { background-color: var(--bg-black); color: #ffffff; font-family: 'Noto Sans KR', sans-serif; margin: 0; overflow-x: hidden; }
+        .neon-text { font-family: 'Orbitron', sans-serif; color: var(--fusion-orange); text-shadow: 0 0 20px rgba(255,102,0,0.7); }
+        
+        .lang-bar { position: sticky; top: 0; background: rgba(5,5,5,0.98); padding: 15px; display: flex; gap: 10px; justify-content: center; z-index: 1000; border-bottom: 2px solid #222; flex-wrap: wrap; }
+        .lang-bar button { background: #1a1a1a; border: 1px solid #333; color: #777; padding: 10px 20px; cursor: pointer; border-radius: 5px; font-size: 0.9rem; transition: 0.3s; font-family: 'Orbitron', sans-serif; }
+        .lang-bar button:hover, .lang-bar button.active { border-color: var(--fusion-orange); color: white; background: #222; box-shadow: 0 0 15px var(--fusion-orange); }
+
+        header { padding: 120px 20px; text-align: center; background: radial-gradient(circle at center, var(--space-blue) 0%, #050505 100%); border-bottom: 1px solid #222; }
+        h1 { font-size: 3.5rem; margin: 0; letter-spacing: 5px; line-height: 1.2; }
+        .vision-sub { font-size: 1.4rem; color: #aaa; margin-top: 30px; font-weight: 300; letter-spacing: 2px; }
+
+        .main-content { max-width: 1200px; margin: 80px auto; padding: 0 40px; }
+        .intro-text { font-size: 1.25rem; line-height: 2.2; color: #eee; text-align: center; margin-bottom: 100px; }
+        
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        .mission-card { background: var(--card-bg); border: 1px solid #333; border-radius: 30px; padding: 60px; transition: 0.6s ease; position: relative; }
+        .mission-card:hover { transform: translateY(-20px); border-color: var(--fusion-orange); box-shadow: 0 30px 60px rgba(255,102,0,0.2); }
+        .mission-card h2 { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; margin-bottom: 30px; color: var(--fusion-orange); }
+        .mission-card p { color: #ccc; line-height: 1.9; font-size: 1.1rem; }
+
+        .social-section { background: #080808; padding: 120px 10%; text-align: center; border-top: 4px solid var(--fusion-orange); margin-top: 120px; }
+        .social-links { display: flex; justify-content: center; gap: 40px; margin-top: 60px; flex-wrap: wrap; }
+        .social-btn { text-decoration: none; color: #fff; background: var(--fusion-orange); font-family: 'Orbitron', sans-serif; font-weight: bold; padding: 25px 80px; border-radius: 12px; font-size: 1.5rem; transition: 0.4s; box-shadow: 0 10px 20px rgba(255,102,0,0.3); }
+        .social-btn:hover { background: #fff; color: var(--fusion-orange); transform: scale(1.08); box-shadow: 0 15px 40px var(--fusion-orange); }
+        
+        .email-area { margin-top: 100px; }
+        .email-link { color: var(--fusion-orange); text-decoration: none; font-size: 2.8rem; border-bottom: 5px solid var(--fusion-orange); font-family: 'Orbitron', sans-serif; transition: 0.3s; display: inline-block; }
+        .email-link:hover { color: #fff; border-color: #fff; text-shadow: 0 0 25px #fff; }
+
+        footer { padding: 100px; text-align: center; font-family: 'Orbitron', sans-serif; font-size: 1rem; color: #444; }
+    </style>
+</head>
+<body>
+
+    <div class="lang-bar">
+        <button onclick="changeLang('ko', this)" class="active">KOREAN</button>
+        <button onclick="changeLang('en', this)">ENGLISH</button>
+        <button onclick="changeLang('zh', this)">CHINESE</button>
+        <button onclick="changeLang('ar', this)">ARABIC</button>
+        <button onclick="changeLang('jp', this)">JAPANESE</button>
+        <button onclick="changeLang('es', this)">SPANISH</button>
+    </div>
+
+    <header>
+        <h1 class="neon-text">HK-SPACE & FUSION</h1>
+        <p id="vision-tag" class="vision-sub">"Infinity Energy & Galactic Infrastructure"</p>
+    </header>
+
+    <div class="main-content">
+        <div id="intro" class="intro-text">
+            HK-SPACE & FUSION은 인류의 영원한 에너지 독립과 우주 진출을 선도하는 HK 그룹의 핵심 부문입니다. 핵융합 기술을 통한 인공태양 프로젝트와 우주 인프라 구축을 통해 지구가 직면한 에너지 위기를 종결시킵니다.
+        </div>
+
+        <div class="grid-container">
+            <div class="mission-card">
+                <h2 id="t1">FUSION ENERGY</h2>
+                <p id="d1">핵융합 기술을 이용한 인공태양 건설. 인류에게 공해 없는 무한한 에너지를 공급하여 지속 가능한 문명의 토대를 완성합니다.</p>
+            </div>
+            <div class="mission-card">
+                <h2 id="t2">SPACE INFRA</h2>
+                <p id="d2">거대 우주 정거장 및 행성 간 운송 네트워크 구축. 인류가 지구를 넘어 우주 시대로 도약하기 위한 물리적 기반을 조성합니다.</p>
+            </div>
+            <div class="mission-card">
+                <h2 id="t3">NEXT GENERATION</h2>
+                <p id="d3">차세대 추진 시스템 및 우주 통신망 연구. HK-FIGURE 로봇과 연동된 무인 우주 개척 시스템을 통해 인류의 영토를 확장합니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="social-section">
+        <h2 class="neon-text" style="font-size: 3.5rem; margin-bottom: 60px;">HK GLOBAL CHANNELS</h2>
+        <div class="social-links">
+            <a href="https://www.youtube.com/@Hyekong2025" target="_blank" class="social-btn">YOUTUBE</a>
+            <a href="https://www.tiktok.com/@hyekong2025" target="_blank" class="social-btn">TIKTOK</a>
+        </div>
+        <div class="email-area">
+            <a href="mailto:info@spacefusion.com" class="email-link">info@spacefusion.com</a>
+        </div>
+    </section>
+
+    <footer>© 2026 HK-SPACE & FUSION | HK GROUP ENERGY DIVISION</footer>
+
+    <script>
+        const content = {
+            ko: { tag: "인공태양 무한 에너지 및 우주 인프라 구축", intro: "HK-SPACE & FUSION은 인류의 에너지 독립과 우주 시대를 여는 핵심입니다. 핵융합 인공태양과 우주 네트워크를 통해 무한한 가치를 창출합니다.", t: ["핵융합 에너지", "우주 인프라", "차세대 우주 개척"], d: ["무한 청정 에너지를 제공하는 인공태양 건설.", "거대 우주 거점 및 행성 간 이동 경로 구축.", "로봇 기술과 융합된 무인 우주 탐사 시스템."] },
+            en: { tag: "Unlimited Fusion Energy & Space Infrastructure", intro: "HK-SPACE & FUSION leads humanity's energy independence. We create infinite value through fusion energy and space networks.", t: ["FUSION ENERGY", "SPACE INFRA", "SPACE EXPLORATION"], d: ["Constructing artificial suns for clean energy.", "Building massive space stations and networks.", "Autonomous exploration systems with HK AI."] },
+            zh: { tag: "人造太阳无限能源与航天基础设施", intro: "HK-SPACE & FUSION 是引领能源独立和航天时代的核心。通过核聚变和航天网络创造无限价值。", t: ["核聚变能源", "航天基础设施", "下一代空间探索"], d: ["建造人造太阳以提供无限清洁能源。", "建设巨大的空间站和航天运输网络。", "结合机器人技术的无人空间开发系统。"] },
+            ar: { tag: "طاقة الاندماج النووي والبنية التحتية للفضاء", intro: "تقود HK-SPACE & FUSION استقلال الطاقة من خلال الاندماج النووي والشبكات الفضائية.", t: ["طاقة الاندماج", "بنية الفضاء", "استكشاف الفضاء"], d: ["بناء شموس اصطناعية للطاقة النظيفة.", "بناء محطات فضائية ضخمة وشبكات نقل.", "أنظمة استكشاف ذاتية متكاملة مع ذكاء HK."] },
+            jp: { tag: "人工太陽無限エネルギーと宇宙인프라", intro: "HK-SPACE & FUSIONは人類のエネルギー独立を切り拓く中核です。核融合と宇宙網で無限の価値を創出します。", t: ["核融合エネルギー", "宇宙インフラ", "次세대 宇宙開拓"], d: ["無限エネルギーを供給する人工太陽建設。", "巨大宇宙基地および惑星間輸送網の構築。", "ロボット技術と融合した宇宙開拓システム。"] },
+            es: { tag: "Energía de Fusión Infinita e Infraestructura Espacial", intro: "HK-SPACE & FUSION lidera la independencia energética a través de la fusión y las redes espaciales.", t: ["ENERGÍA DE FUSIÓN", "INFRA ESPACIAL", "EXPLORACIÓN ESPACIAL"], d: ["Construcción de soles artificiales para energía limpia.", "Edificación de estaciones espaciales y redes.", "Sistemas de exploración autónomos con HK AI."] }
+        };
+        function changeLang(lang, btn) {
+            document.getElementById('vision-tag').innerText = content[lang].tag;
+            document.getElementById('intro').innerText = content[lang].intro;
+            for(let i=1; i<=3; i++){
+                document.getElementById(`t${i}`).innerText = content[lang].t[i-1];
+                document.getElementById(`d${i}`).innerText = content[lang].d[i-1];
+            }
+            document.querySelectorAll('.lang-bar button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+    </script>
+</body>
+</html>
